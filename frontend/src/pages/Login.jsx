@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { FaSignInAlt } from "react-icons/fa";
+import { FaUser } from "react-icons/fa";
 
 function Login() {
   const [formData, setFormData] = useState({
@@ -7,31 +7,21 @@ function Login() {
     password: "",
   });
 
-  const { name, email, password, password2 } = formData;
+  const { email, password } = formData;
 
-  const onChange = (e) => {
-    setFormData((prevstate) => ({
-      ...prevstate,
-      [e.target.name]: e.target.value,
-    }));
-  };
-
-  //   Submit the form
-  const onSubmit = (e) => {
-    e.prevnetDefault();
-  };
+  const onChange = () => {};
 
   return (
     <>
       <section className="heading">
         <h1>
-          <FaSignInAlt /> Login
+          <FaUser /> Login
         </h1>
-        <p>Login and start setting goals</p>
+        <p>Login to your account</p>
       </section>
 
       <section className="form">
-        <form onSubmit={onSubmit}>
+        <form>
           <div className="form-group">
             <input
               type="email"
@@ -52,7 +42,6 @@ function Login() {
               onChange={onChange}
             />
           </div>
-
           <div className="form-group">
             <button id="submit" className="btn btn-block">
               Submit
