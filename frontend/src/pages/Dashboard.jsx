@@ -21,11 +21,16 @@ function Dashboard() {
     }
 
     if (!user) {
+      console.log("User not authenticated, redirecting to login...");
       navigate("/login");
+    } else {
+      dispatch(getGoals());
     }
 
-    dispatch(getGoals());
-  }, [user, navigate]);
+    return () => {
+      dispatch(reset());
+    };
+  }, [user, navigate, isError, message, dispatch]);
 
   if (isLoading) {
     return <Spinner />;
